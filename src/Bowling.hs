@@ -19,10 +19,11 @@ instance Show Frame where
   show (Spare  a b) = "Spare  " ++ show a ++ " " ++ show b
   show (Strike a b) = "Strike " ++ show a ++ " " ++ show b
 
-bowling :: [Int] -> Int
-bowling pins
-  | pins == pins_0 =   0
-  | pins == pins_1 = 133
+bowling :: [Int] -> Maybe Int
+bowling pins = do
+  frames <- toFrames pins
+  return $ score frames
+
 
 toFrames :: [Int] -> Maybe [Frame]
 toFrames pins = go 1 pins
