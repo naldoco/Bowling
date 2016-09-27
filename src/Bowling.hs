@@ -25,8 +25,11 @@ bowling pins
   | pins == pins_1 = 133
 
 toFrames :: [Int] -> [Frame]
-toFrames (x:y:z:zs)
-  | x + y == 10 = (Spare x z) : toFrames (z:zs)
-  | otherwise   = (Open  x y) : toFrames (z:zs)
-toFrames [x, y] = [Open x y]
-toFrames []     = []
+toFrames pins = go 1 pins
+  where
+    go 10 [x, y] = [Open x y]
+    go 10 [x, y, z]
+      | x + y == 10 = [Spare x z]
+    go n (x:y:z:zs)
+      | x + y == 10 = (Spare x z) : go (n+1) (z:zs)
+      | otherwise   = (Open  x y) : go (n+1) (z:zs)
