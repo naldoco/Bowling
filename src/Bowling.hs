@@ -29,7 +29,9 @@ toFrames pins = go 1 pins
   where
     go 10 [x, y] = [Open x y]
     go 10 [x, y, z]
-      | x + y == 10 = [Spare x z]
+      | x == 10     = [Strike y z]
+      | x + y == 10 = [Spare  x z]
     go n (x:y:z:zs)
+      | x     == 10 = (Strike y z) : go (n+1) (y:z:zs)
       | x + y == 10 = (Spare x z) : go (n+1) (z:zs)
       | otherwise   = (Open  x y) : go (n+1) (z:zs)
