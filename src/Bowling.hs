@@ -6,7 +6,18 @@ pins_1 = [1,4,4,5,6,4,5,5,10,0,1,7,3,6,4,10,2,8,6]    -- Total score: 133
 data Frame = Open   Int Int
            | Spare  Int Int
            | Strike Int Int
-           deriving (Eq, Show)
+--         deriving (Eq, Show)
+
+instance Eq Frame where
+  Open   a b == Open   a' b' = a == a' && b == b'
+  Spare  a b == Spare  a' b' = a == a' && b == b'
+  Strike a b == Strike a' b' = a == a' && b == b'
+  _          == _            = False
+
+instance Show Frame where
+  show (Open   a b) = "Open   " ++ show a ++ " " ++ show b
+  show (Spare  a b) = "Spare  " ++ show a ++ " " ++ show b
+  show (Strike a b) = "Strike " ++ show a ++ " " ++ show b
 
 bowling :: [Int] -> Int
 bowling pins
