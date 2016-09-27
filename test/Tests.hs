@@ -62,6 +62,10 @@ tests =
           opens n = replicate n (Open 2 5)
       in  strike ++ opens 2 ++ strike ++ opens 4 ++ strike ++ opens 1
     )
+  , ( "Strike in last position"    -- Strike in last position
+    , take 18 (cycle [3, 3]) ++ [10, 5, 6]
+    , replicate 9 (Open 3 3) ++ [Strike 5 6]
+    )
   ]
 
 main = defaultMain bowlingSuite
