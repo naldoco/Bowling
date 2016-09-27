@@ -24,6 +24,10 @@ bowlingSuite =
     , testGroup "toFrames" $
         map (\(label, input, expected) ->
                 testCase label $ toFrames input @?= expected) tests
+    , testGroup "score"
+        [ let Just frames = toFrames pins1
+          in  testCase "Given example" $ score frames @?= 133
+        ]
     ]
 
 tests :: [(String, [Int], Maybe [Frame])]    -- (label, pins, frames)

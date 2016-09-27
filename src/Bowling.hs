@@ -40,3 +40,11 @@ toFrames pins = go 1 pins
       | x + y <  10 = fmap (Open   x y :) $ go (n+1) (z:zs)
       | otherwise   = Nothing
     go _ _          = Nothing
+
+frameScore :: Frame -> Int
+frameScore (Open   x y) =  x + y
+frameScore (Spare  _ y) = 10 + y
+frameScore (Strike x y) = 10 + x + y
+
+score :: [Frame] -> Int
+score frames = sum $ map frameScore frames
