@@ -36,9 +36,9 @@ toFrames pins = go 1 pins
       | x + y == 10 = Just [Spare  x z]
       | otherwise   = Nothing
     go n (x:y:z:zs)
-      | x     == 10 = fmap (Strike y z :) $ go (n+1) (y:z:zs)
-      | x + y == 10 = fmap (Spare  x z :) $ go (n+1) (z:zs)
-      | x + y <  10 = fmap (Open   x y :) $ go (n+1) (z:zs)
+      | x     == 10 = (Strike y z :) <$> go (n+1) (y:z:zs)
+      | x + y == 10 = (Spare  x z :) <$> go (n+1)   (z:zs)
+      | x + y <  10 = (Open   x y :) <$> go (n+1)   (z:zs)
       | otherwise   = Nothing
     go _ _          = Nothing
 
@@ -48,4 +48,4 @@ frameScore (Spare  _ y) = 10 + y
 frameScore (Strike x y) = 10 + x + y
 
 score :: [Frame] -> Int
-score frames = sum $ map frameScore frames
+score = sum . map frameScore
