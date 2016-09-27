@@ -25,4 +25,5 @@ bowling pins
   | pins == pins_1 = 133
 
 toFrames :: [Int] -> [Frame]
-toFrames pins = replicate 10 (Open 0 0)
+toFrames (x:y:ys) = (Open x y) : toFrames ys
+toFrames []       = []
