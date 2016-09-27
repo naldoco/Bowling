@@ -54,6 +54,14 @@ tests =
     , take 18 (cycle [0, 0]) ++ [1, 9, 5]
     , replicate 9 (Open 0 0) ++ [Spare 1 5]
     )
+  , ( "Strike in non last position"    -- Strike
+    , let strike = [10]
+          opens n = take (2 * n) $ cycle [2, 5]
+      in  strike ++ opens 2 ++ strike ++ opens 4 ++ strike ++ opens 1
+    , let strike = [Strike 2 5]
+          opens n = replicate n (Open 2 5)
+      in  strike ++ opens 2 ++ strike ++ opens 4 ++ strike ++ opens 1
+    )
   ]
 
 main = defaultMain bowlingSuite
