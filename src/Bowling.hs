@@ -1,4 +1,4 @@
 module Bowling where
 
 bowling :: [Int] -> Int
-bowling pins = undefined
+bowling pins = 0
