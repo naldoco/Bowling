@@ -17,5 +17,10 @@ bowlingSuite =
       , testCase ("Pins 133 is " ++ (show pins1) ++ "-> total: 133") $
           show (bowling pins1) @?= "133"
       ]
+    , testGroup "toFrames" $
+      [ testCase "Zeros are Open 0 0s" $
+          toFrames (replicate 20 0) @?= replicate 10 (Open 0 0)
+      ]
     ]
+
 main = defaultMain bowlingSuite
