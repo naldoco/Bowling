@@ -28,6 +28,10 @@ bowlingSuite =
         [ let Just frames = toFrames pins1
           in  testCase "Given example" $ score frames @?= 133
         ]
+    , testGroup "frames (only to show them)"
+        [ let Just frame1 = toFrames pins1
+          in  testCase ("frame1: " ++ (show frame1)) $ True @?= True
+        ]
     ]
 
 tests :: [(String, [Int], Maybe [Frame])]    -- (label, pins, frames)
