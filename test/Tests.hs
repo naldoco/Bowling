@@ -66,10 +66,10 @@ tests =
     , take 18 (cycle [3, 3]) ++ [10, 5, 6]
     , Just $ replicate 9 (Open 3 3) ++ [Strike 5 6]
     )
---  , ("ill formed play"
---    , [0, 1]
---    , Nothing
---    )
+  , ("ill formed play"
+    , [0, 1]
+    , Nothing
+    )
   ]
 
 main = defaultMain bowlingSuite
