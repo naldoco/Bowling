@@ -50,6 +50,10 @@ tests =
           opens n = replicate n (Open 3 4)
       in  spare ++ opens 2 ++ spare ++ opens 4 ++ spare ++ opens 1
     )
+  , ( "Spare in last position"    -- Spare in last position
+    , take 18 (cycle [0, 0]) ++ [1, 9, 5]
+    , replicate 9 (Open 0 0) ++ [Spare 1 5]
+    )
   ]
 
 main = defaultMain bowlingSuite
