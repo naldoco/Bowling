@@ -24,8 +24,8 @@ bowling pins
   | pins == pins_0 =   0
   | pins == pins_1 = 133
 
-toFrames :: [Int] -> [Frame]
-toFrames pins = go 1 pins
+toFrames :: [Int] -> Maybe [Frame]
+toFrames pins = Just $ go 1 pins
   where
     go 10 [x, y] = [Open x y]
     go 10 [x, y, z]
