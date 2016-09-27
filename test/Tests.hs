@@ -42,6 +42,14 @@ tests =
     , take 20 $ cycle [4,5]
     , replicate 10 (Open 4 5)
     )
+  , ( "Spare in non last position"    -- Spare
+    , let spare = [1, 9]
+          opens n = take (2 * n) $ cycle [3, 4]
+      in  spare ++ opens 2 ++ spare ++ opens 4 ++ spare ++ opens 1
+    , let spare = [Spare 1 3]
+          opens n = replicate n (Open 3 4)
+      in  spare ++ opens 2 ++ spare ++ opens 4 ++ spare ++ opens 1
+    )
   ]
 
 main = defaultMain bowlingSuite
