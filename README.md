@@ -40,8 +40,8 @@ https://dl.dropboxusercontent.com/u/18532990/Haskell.pdf - El PDF con los apunte
 ## Clone and run tests
 
 
-    git clone https://github.com/naldoco/tautologyChecker
-    cd tautologyChecker
+    git clone https://github.com/naldoco/Bowling
+    cd Bowling
     cabal update
     cabal sandbox init
     cabal install tasty tasty-hunit
